@@ -1,5 +1,7 @@
 package com.echoinacup
 
+import com.echoinacup.StreamOperationsAnalogues.mergeTwoListsIntoMapJava
+import com.echoinacup.StreamOperationsAnalogues.sumWithReduceJava
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -8,6 +10,7 @@ class StreamOperationsKtTest {
     fun `test fold for sum values`() {
         val values = listOf(1, 2, 3, 4, 5)
         assertThat(values.sumListValues()).isEqualTo(15)
+        assertThat(sumWithReduceJava(values)).isEqualTo(15)
     }
 
     @Test
@@ -52,10 +55,14 @@ class StreamOperationsKtTest {
         val digitNames = listOf("one", "two", "three")
         val intValues = listOf(1, 2, 3)
 
+        val expectedMap = mapOf(
+            "one" to 1, "two" to 2, "three" to 3
+        )
         assertThat(mergeTwoListsIntoMap(digitNames, intValues)).containsAllEntriesOf(
-            mapOf(
-                "one" to 1, "two" to 2, "three" to 3
-            )
+            expectedMap
+        )
+        assertThat(mergeTwoListsIntoMapJava(digitNames, intValues)).containsAllEntriesOf(
+            expectedMap
         )
     }
 
@@ -71,6 +78,20 @@ class StreamOperationsKtTest {
         assertThat(words.associateStringToLength()).containsAllEntriesOf(
             mapOf(
                 "apple" to 5, "banana" to 6, "cherry" to 6
+            )
+        )
+    }
+
+    @Test
+    fun `test chunking`() {
+        val intListForChunk = (1..10).toList()
+        assertThat(intListForChunk.chunkIntList(2)).isEqualTo(
+            listOf(
+                listOf(1, 2),
+                listOf(3, 4),
+                listOf(5, 6),
+                listOf(7, 8),
+                listOf(9, 10)
             )
         )
     }

@@ -54,3 +54,8 @@ fun cumulativeSum(valueToSum: List<Int>): List<Int> {
 fun List<String>.associateStringToLength(): Map<String, Int> {
     return this.associateWith { it.length }
 }
+
+// chunks
+fun List<Int>.chunkIntList(sizeOfChunk: Int): List<List<Int>> {
+    return this.chunked(sizeOfChunk)
+}
