@@ -1,0 +1,8 @@
+Kotlin Function	Java Equivalent	Use Case
+zip	            Streams.zip()	Combine lists element-wise
+fold	        reduce() (with initial value)	Reduce with accumulation
+reduce	        reduce()	Reduce without initial value
+scan	        (No direct equivalent)	Keep intermediate fold results
+associateWith	Collectors.toMap()	Convert list to map
+chunked	        List.subList()	Split a list into chunks
+windowed	    (No direct equivalent)	Overlapping sublists
