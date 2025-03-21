@@ -54,9 +54,23 @@ class StreamOperationsKtTest {
 
         assertThat(mergeTwoListsIntoMap(digitNames, intValues)).containsAllEntriesOf(
             mapOf(
-                "one" to 1,
-                "two" to 2,
-                "three" to 3
+                "one" to 1, "two" to 2, "three" to 3
+            )
+        )
+    }
+
+    @Test
+    fun `calculate cumulative sum of int values`() {
+        val intList = listOf(1, 2, 3, 4)
+        assertThat(cumulativeSum(intList)).isEqualTo(listOf(0, 1, 3, 6, 10))
+    }
+
+    @Test
+    fun `associate words to their sizes`() {
+        val words = listOf("apple", "banana", "cherry")
+        assertThat(words.associateStringToLength()).containsAllEntriesOf(
+            mapOf(
+                "apple" to 5, "banana" to 6, "cherry" to 6
             )
         )
     }

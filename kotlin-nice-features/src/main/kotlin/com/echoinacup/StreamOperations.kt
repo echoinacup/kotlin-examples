@@ -44,3 +44,13 @@ fun sumTwoListsElementsBetweenEachOther(listOne: List<Int>, listTwo: List<Int>):
 fun mergeTwoListsIntoMap(stringList: List<String>, intList: List<Int>): Map<String, Int> {
     return stringList.zip(intList) { strVal, intVal -> strVal to intVal }.toMap()
 }
+
+// scan function
+fun cumulativeSum(valueToSum: List<Int>): List<Int> {
+    return valueToSum.scan(0) { acc, currentVal -> acc + currentVal }
+}
+
+// associateWith
+fun List<String>.associateStringToLength(): Map<String, Int> {
+    return this.associateWith { it.length }
+}
