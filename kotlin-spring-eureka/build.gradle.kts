@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "2.0.21"
+    kotlin("jvm") version "2.1.10"
     id("org.springframework.boot") version "3.4.4"
     id("io.spring.dependency-management") version "1.1.7"
 }
@@ -18,21 +18,18 @@ dependencyManagement {
 }
 
 dependencies {
-    // Spring Boot WebFlux (Required for Gateway)
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
-
-    // Spring Cloud Gateway
-    implementation("org.springframework.cloud:spring-cloud-starter-gateway")
+    // Spring Boot Web for REST APIs
+    implementation("org.springframework.boot:spring-boot-starter-web")
 
     // Eureka Client for Service Discovery
-    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server")
 
     // Kotlin Support
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // Spring Boot Starter Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation(kotlin("test"))
 }
 
 tasks.test {
